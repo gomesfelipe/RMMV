@@ -1,8 +1,10 @@
 //=============================================================================
 // Animated_TitleScreen.js
 //=============================================================================
-
-
+/*:
+ * @plugindesc (v0.05) Cena de titulo animado.
+ * @author RocketKnight/Felipe Gomes
+ */
 var commands =['Menu1','Menu02','Menu03']
 Scne_Title.prototype.createCommandWindow = function() {
 	this._commandWindow = new Window_TitleCommand();
