@@ -6,16 +6,10 @@
  * @author RocketKnight/Felipe Gomes
  */
 
-
 /*:
  * @plugindesc (v1.0) Cena de titulo animado com personagens.
  * @author Moghunter
 
- * @param Rotation Time
- * @desc Tempo para ativar a rotação.
- * @default 300
- *
- *
  */
 
 //=============================================================================
@@ -25,10 +19,6 @@
 　　Imported.Animated_TitleScreen = true;
 　　var GomesRocket = GomesRocket || {}; 
   GomesRocket.parameters = PluginManager.parameters('Animated_TitleScreen');
-
-//=============================================================================
-// ** Scene Title
-//============================================================================= 
 
 //==============================
 // * Initialize
