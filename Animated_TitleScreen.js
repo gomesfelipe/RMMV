@@ -96,8 +96,6 @@ Scene_Title.prototype.createBackground = function() {
   this._background[1].scale.x = 1.5;
   this._background[1].scale.y = 1.5;
   this.resize;
-
-//  this.createHimariSprites();
 };
 
 
