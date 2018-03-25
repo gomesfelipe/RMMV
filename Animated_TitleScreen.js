@@ -4,12 +4,12 @@
 /*:
  * @plugindesc (v0.05) Cena de titulo animado.
  * @author RocketKnight/Felipe Gomes
- */
 
-/*:
- * @plugindesc (v1.0) Cena de titulo animado com personagens.
- * @author Moghunter
-
+ * @param Char Number
+ * @desc Definição da quantidade de imagens dos personagens.
+ * @default 4
+ *  
+ *
  */
 
 //=============================================================================
@@ -19,6 +19,21 @@
 　　Imported.Animated_TitleScreen = true;
 　　var GomesRocket = GomesRocket || {}; 
   GomesRocket.parameters = PluginManager.parameters('Animated_TitleScreen');
+  var monster;
+  var FRAMES = [
+  "frame-1.png",
+  "frame-2.png",
+  "frame-3.png",
+  "frame-4.png",
+];
+var frameindex;
+var frametime;
+var FRAMERATE = 0.08;
+var VELOCITY = 100;
+
+//=============================================================================
+// ** Scene Title
+//============================================================================= 
 
 //==============================
 // * Initialize
@@ -32,10 +47,6 @@ Scene_Title.prototype.initialize = function() {
   this._scenarioField.scale.x = 1.00;
   this._scenarioField.scale.y = this._scenarioField.scale.x;
   this.addChild(this._scenarioField);
-  this._duration = [[],[],[]];
-  this._side = [0,0,0];
-  this._rt = [0,0,0];
-  this._zt = [1.00,0,0];
   this._firstRefresh = true;
   this.loadImages();  
 };
@@ -58,7 +69,7 @@ Scene_Title.prototype.resize = function(){
 // * Load Images
 //==============================
 Scene_Title.prototype.loadImages = function() {
-  this._back_img = [ImageManager.loadTitle1("layer_1"),
+  this._back_img = [ImageManager.loadTitle1("Background_1"),
                      ImageManager.loadTitle1("layer_2"),
             ];
 
@@ -72,9 +83,12 @@ Scene_Title.prototype.createBackground = function() {
     _alias_gomesrocket_createBackground.call(this);
   this.removeChild(this._backSprite1);
   this.removeChild(this._backSprite2);
-    var width = Graphics.boxWidth * 2;
+  var width = Graphics.boxWidth * 2;
   var height = Graphics.boxHeight * 2;
   this._background = [];
+  //ratio = Math.min(window.innerWidth/Graphics.width,
+    //               window.innerHeight/Graphics.height);
+
   for (var i = 0; i < 2 ; i++) {
      this._background[i] = new TilingSprite(this._back_img[i]);
      this._background[i].move(0,0, width, height);
@@ -82,58 +96,15 @@ Scene_Title.prototype.createBackground = function() {
      this._background[i].anchor.y = 0.5;
      this._scenarioField.addChild(this._background[i]);
   }
+  this._background[0].scale.x = Math.min(window.innerWidth/Graphics.width);
+  this._background[0].scale.y = Math.min(window.innerHeight/Graphics.height);
+  //this._background[0].y = 600;
   this._background[1].y = Graphics.boxHeight / 2;
-  this._background[1].scale.x = 1.5;
-  this._background[1].scale.y = 1.5;
-  this.resize;
+  this._background[1].scale.x = Math.min(window.innerWidth/Graphics.width);
+  this._background[1].scale.y = Math.min(window.innerHeight/Graphics.height);
 };
 
 
-//==============================
-// * First Refresh
-//==============================
-Scene_Title.prototype.firstRefresh = function() {
-   this._firstRefresh = false;
-   for (var i = 0; i < this._char_img.length  ; i++) {  
-        this._chars[0].bitmap = this._char_img[i];
-   };
-   this._background[1].y = Graphics.boxHeight / 2 + (this._back_img[1].height * 18 / 100);
-};
-
-//==============================
-// * Sprite Move To
-//==============================
-Scene_Title.prototype.sprite_move_to = function(value,real_value,speed) {
-  if (value == real_value) {return value};
-  var dnspeed = speed;
-  if (value > real_value) {value -= dnspeed;
-      if (value < real_value) {value = real_value};}
-    else if (value < real_value) {value  += dnspeed;
-      if (value  > real_value) {value  = real_value};   
-    };
-  return value;
-};
-
-//==============================
-// * RefreshSprite
-//==============================
-Scene_Title.prototype.refreshSprite = function(sprite,index,type) {
-  this.setOrder(sprite,index,type);
-    this.setInitialEffect(sprite,index,type);
-};
-
-//==============================
-// * SetOrder
-//==============================
-Scene_Title.prototype.setOrder = function(sprite,index,type) {
-  var d = 0;
-  for (var i = 0; i < this._duration[type].length ; i++) {
-      if (d < this._duration[type][i]) {d = this._duration[type][i]};
-    }; 
-    this._duration[type][index] = d + this.sp_d();
-  this._scenarioField.removeChild(sprite);
-  this._scenarioField.addChild(sprite);
-};
 
 
 //==============================
