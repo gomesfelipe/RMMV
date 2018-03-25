@@ -4,17 +4,17 @@
 /*:
  * @plugindesc (v0.05) Cena de titulo animado.
  * @author RocketKnight/Felipe Gomes
-
+ *
+ //=============================================================================
+// ** PLUGIN PARAMETERS
+//=============================================================================
+ *
  * @param Char Number
  * @desc Definição da quantidade de imagens dos personagens.
  * @default 4
  *  
  *
  */
-
-//=============================================================================
-// ** PLUGIN PARAMETERS
-//=============================================================================
 　　var Imported = Imported || {};
 　　Imported.Animated_TitleScreen = true;
 　　var GomesRocket = GomesRocket || {}; 
