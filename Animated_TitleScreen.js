@@ -32,14 +32,11 @@
   GomesRocket.bbr_char_y = Number(GomesRocket.parameters['Char Y-Axis'] || 0);
 
   Scene_Title.prototype.resize = function(){
- 
   // Determine which screen dimension is most constrained
   ratio = Math.min(window.innerWidth/Graphics.width,
                    window.innerHeight/Graphics.height);
- 
   // Scale the view appropriately to fill that dimension
   stage.scale.x = stage.scale.y = ratio;
- 
   // Update the renderer dimensions
   renderer.resize(Math.ceil(Graphics.width * ratio),
                   Math.ceil(Graphics.height * ratio));
@@ -79,19 +76,14 @@ Scene_Title.prototype.loadImages = function() {
 //==============================
 // * Create Background
 //==============================
-
 var _alias_gomesrocket_createBackground = Scene_Title.prototype.createBackground;
 Scene_Title.prototype.createBackground = function() { 
     _alias_gomesrocket_createBackground.call(this);
   this.removeChild(this._backSprite1);
   this.removeChild(this._backSprite2);
-
   var width = Graphics.width * 2;
   var height = Graphics.height* 2;
   this._background = [];
-  //ratio = Math.min(window.innerWidth/Graphics.width,
-    //               window.innerHeight/Graphics.height);
-
   for (var i = 0; i < 2 ; i++) {
      this._background[i] = new TilingSprite(this._back_img[i]);
      this._background[i].move(0,0, width, height);
@@ -101,7 +93,6 @@ Scene_Title.prototype.createBackground = function() {
   }
   this._background[0].scale.x = Math.min(window.innerWidth/Graphics.width);
   this._background[0].scale.y = Math.min(window.innerHeight/Graphics.height);
-  //this._background[0].y = 600;
   this._background[1].y = Graphics.boxHeight / 2;
   this._background[1].scale.x = Math.min(window.innerWidth/Graphics.width);
   this._background[1].scale.y = Math.min(window.innerHeight/Graphics.height);
