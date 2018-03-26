@@ -103,8 +103,6 @@ Scene_Title.prototype.createBackground = function() {
 // * Create BBRSprites
 //==============================
 Scene_Title.prototype.createBBRSprites = function() {
-  //this.createHbackground();
-  //this.createFlowers();
   this.createCharacters();
 };
 
