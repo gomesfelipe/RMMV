@@ -26,10 +26,10 @@
 　　var Imported = Imported || {};
 　　Imported.Animated_TitleScreen = true;
 　　var GomesRocket = GomesRocket || {}; 
-  GomesRocket.parameters = PluginManager.parameters('Animated_TitleScreen');
-  GomesRocket.bbr_char_number = Number(GomesRocket.parameters['Char Number'] || 4);
-  GomesRocket.bbr_char_x = Number(GomesRocket.parameters['Char X-Axis'] || 0);
-  GomesRocket.bbr_char_y = Number(GomesRocket.parameters['Char Y-Axis'] || 0);
+    GomesRocket.parameters = PluginManager.parameters('Animated_TitleScreen');
+    GomesRocket.bbr_char_number = Number(GomesRocket.parameters['Char Number'] || 4);
+    GomesRocket.bbr_char_x = Number(GomesRocket.parameters['Char X-Axis'] || 0);
+    GomesRocket.bbr_char_y = Number(GomesRocket.parameters['Char Y-Axis'] || 0);
 
 //==============================
 // * Initialize
@@ -122,3 +122,4 @@ Scene_Title.prototype.update = function() {
   };
     Scene_Base.prototype.update.call(this);
 };
+
