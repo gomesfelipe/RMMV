@@ -2,7 +2,7 @@
 // Animated_TitleScreen.js
 //=============================================================================
 /*:
- * @plugindesc (v0.05) Cena de titulo animado.
+ * @plugindesc (v0.1) Cena de titulo animado.
  * @author RocketKnight/Felipe Gomes
  *
  //=============================================================================
@@ -23,24 +23,13 @@
  *
  */
 
-　var Imported = Imported || {};
-　Imported.Animated_TitleScreen = true;
-　var GomesRocket = GomesRocket || {}; 
+　　var Imported = Imported || {};
+　　Imported.Animated_TitleScreen = true;
+　　var GomesRocket = GomesRocket || {}; 
   GomesRocket.parameters = PluginManager.parameters('Animated_TitleScreen');
   GomesRocket.bbr_char_number = Number(GomesRocket.parameters['Char Number'] || 4);
   GomesRocket.bbr_char_x = Number(GomesRocket.parameters['Char X-Axis'] || 0);
   GomesRocket.bbr_char_y = Number(GomesRocket.parameters['Char Y-Axis'] || 0);
-
-  Scene_Title.prototype.resize = function(){
-  // Determine which screen dimension is most constrained
-  ratio = Math.min(window.innerWidth/Graphics.width,
-                   window.innerHeight/Graphics.height);
-  // Scale the view appropriately to fill that dimension
-  stage.scale.x = stage.scale.y = ratio;
-  // Update the renderer dimensions
-  renderer.resize(Math.ceil(Graphics.width * ratio),
-                  Math.ceil(Graphics.height * ratio));
-}
 
 //==============================
 // * Initialize
@@ -56,9 +45,9 @@ Scene_Title.prototype.initialize = function() {
   this.addChild(this._scenarioField);
   this._char_number = Math.min(Math.max(GomesRocket.bbr_char_number,1),999);
   this._char_number += 1;
-  this._firstRefresh = true;
   this.loadImages();  
 };
+
 
 //==============================
 // * Load Images
@@ -81,9 +70,11 @@ Scene_Title.prototype.createBackground = function() {
     _alias_gomesrocket_createBackground.call(this);
   this.removeChild(this._backSprite1);
   this.removeChild(this._backSprite2);
+
   var width = Graphics.width * 2;
   var height = Graphics.height* 2;
   this._background = [];
+         window.innerHeight/Graphics.height);
   for (var i = 0; i < 2 ; i++) {
      this._background[i] = new TilingSprite(this._back_img[i]);
      this._background[i].move(0,0, width, height);
@@ -121,11 +112,13 @@ Scene_Title.prototype.createCharacters = function() {
   };
 };
 
-//==============================
-// * Set Characters
-//==============================
 
-Scene_Title.prototype.setCharacters= function(){
-
-}
-
+Scene_Title.prototype.update = function() {
+    this._background[0].origin.x += 1;
+  //this._background[0].origin.y += 1;
+    this._background[1].origin.x += 2; 
+  for (var i = 0; i < 6 ; i++) {
+   // this.updateSprites(this._chars[i],i,1); 
+  };
+    Scene_Base.prototype.update.call(this);
+};
