@@ -5,9 +5,6 @@
  * @plugindesc (v0.05) Cena de titulo animado.
  * @author RocketKnight/Felipe Gomes
  */
-
-
-
 //=============================================================================
 // ** PLUGIN PARAMETERS
 //=============================================================================
@@ -15,6 +12,7 @@
 　　Imported.Animated_TitleScreen = true;
 　　var GomesRocket = GomesRocket || {}; 
   GomesRocket.parameters = PluginManager.parameters('Animated_TitleScreen');
+  
 //==============================
 // * Initialize
 //==============================
@@ -34,20 +32,6 @@ Scene_Title.prototype.initialize = function() {
   this._firstRefresh = true;
   this.loadImages();  
 };
-
-Scene_Title.prototype.resize = function(){
- 
-  // Determine which screen dimension is most constrained
-  ratio = Math.min(window.innerWidth/Graphics.width,
-                   window.innerHeight/Graphics.height);
- 
-  // Scale the view appropriately to fill that dimension
-  stage.scale.x = stage.scale.y = ratio;
- 
-  // Update the renderer dimensions
-  renderer.resize(Math.ceil(Graphics.width * ratio),
-                  Math.ceil(Graphics.height * ratio));
-}
 
 //==============================
 // * Load Images
