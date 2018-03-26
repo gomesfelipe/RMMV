@@ -12,7 +12,7 @@
 　　Imported.Animated_TitleScreen = true;
 　　var GomesRocket = GomesRocket || {}; 
   GomesRocket.parameters = PluginManager.parameters('Animated_TitleScreen');
-  
+
 //==============================
 // * Initialize
 //==============================
@@ -25,10 +25,6 @@ Scene_Title.prototype.initialize = function() {
   this._scenarioField.scale.x = 1.00;
   this._scenarioField.scale.y = this._scenarioField.scale.x;
   this.addChild(this._scenarioField);
-  this._duration = [[],[],[]];
-  this._side = [0,0,0];
-  this._rt = [0,0,0];
-  this._zt = [1.00,0,0];
   this._firstRefresh = true;
   this.loadImages();  
 };
