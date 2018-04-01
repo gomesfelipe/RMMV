@@ -61,12 +61,9 @@ Scene_Title.prototype.createBackground = function() {
     _alias_gomesrocket_createBackground.call(this);
   this.removeChild(this._backSprite1);
   this.removeChild(this._backSprite2);
-    var width = Graphics.width * 2;
-  var height = Graphics.height * 2;
   this._background = [];
   for (var i = 0; i < 2 ; i++) {
      this._background[i] = new TilingSprite(this._back_img[i]);
-     this._background[i].move(0,0, width, height);
      this._background[i].anchor.x = 0.5;
      this._background[i].anchor.y = 0.5;
      this._scenarioField.addChild(this._background[i]);
@@ -84,6 +81,7 @@ Scene_Title.prototype.createCharacters = function() {
   this._chars = [];
   for (var i = 0; i < 6 ; i++) {
      this._chars[i] = new Sprite();
+     //this._chars[i] = new TitleCharacters(i);
      this._chars[i].anchor.x = 1.0;
      this._chars[i].anchor.y = 1.0;
      this._chars[i].x += Graphics.height / 2-100;
