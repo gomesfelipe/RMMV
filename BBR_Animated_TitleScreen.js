@@ -16,11 +16,11 @@
  *
   */
 
-　　var Imported = Imported || {};
-　　Imported.BBR_Animated_TitleScreen = true;
-　　var GomesRocket = GomesRocket || {}; 
-  GomesRocket.parameters = PluginManager.parameters('BBR_Animated_TitleScreen');
-  GomesRocket.bbr_char_number = Number(GomesRocket.parameters['Char Number'] || 4);
+　var Imported = Imported || {};
+　Imported.BBR_Animated_TitleScreen = true;
+　var GomesRocket = GomesRocket || {}; 
+ GomesRocket.parameters = PluginManager.parameters('BBR_Animated_TitleScreen');
+ GomesRocket.bbr_char_number = Number(GomesRocket.parameters['Char Number'] || 4);
 
 //==============================
 // * Initialize
