@@ -9,12 +9,19 @@
 // ** PLUGIN PARAMETERS
 //=============================================================================
  *
+ * @param Char Number
+ * @desc Setup the number of the characters on screen.
+ * @default 4
+ *  
+ *
   */
 
-　var Imported = Imported || {};
-　Imported.BBR_Animated_TitleScreen = true;
-　var GomesRocket = GomesRocket || {}; 
-  
+　　var Imported = Imported || {};
+　　Imported.BBR_Animated_TitleScreen = true;
+　　var GomesRocket = GomesRocket || {}; 
+  GomesRocket.parameters = PluginManager.parameters('BBR_Animated_TitleScreen');
+  GomesRocket.bbr_char_number = Number(GomesRocket.parameters['Char Number'] || 4);
+
 //==============================
 // * Initialize
 //==============================
@@ -29,8 +36,8 @@ Scene_Title.prototype.initialize = function() {
   this.addChild(this._scenarioField);
   this._char_number = Math.min(Math.max(GomesRocket.bbr_char_number,1),999);
   this._char_number += 1;
-  this.loadImages();  
-  this.createCharacters();
+  this.loadImages(); 
+  this.createCharacters(); 
 };
 
 //==============================
@@ -60,11 +67,11 @@ Scene_Title.prototype.createBackground = function() {
   for (var i = 0; i < 2 ; i++) {
      this._background[i] = new TilingSprite(this._back_img[i]);
      this._background[i].move(0,0, width, height);
-       this._background[i].anchor.x = 0.5;
+     this._background[i].anchor.x = 0.5;
      this._background[i].anchor.y = 0.5;
      this._scenarioField.addChild(this._background[i]);
   }
-  this._background[1].y = Graphics.height / 2;
+  this._background[1].y = Graphics.boxHeight / 2;
   this._background[1].scale.x = 1.5;
   this._background[1].scale.y = 1.5;
 };
@@ -77,6 +84,9 @@ Scene_Title.prototype.createCharacters = function() {
   this._chars = [];
   for (var i = 0; i < 6 ; i++) {
      this._chars[i] = new Sprite();
+     //this._chars[i] = new TitleCharacters(i);
+     this._chars[i].anchor.x = 1.0;
+     this._chars[i].anchor.y = 1.0;
      this._chars[i].x += Graphics.height / 2-100;
      this._chars[i].y += Graphics.height / 2+100;
      this._scenarioField.addChild(this._chars[i]);
@@ -86,6 +96,7 @@ Scene_Title.prototype.createCharacters = function() {
         this._chars[0].bitmap = this._char_img[i];
    };
 };
+
 
 Scene_Title.prototype.update = function() {
     this._background[0].origin.x += 1;
