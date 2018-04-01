@@ -84,7 +84,6 @@ Scene_Title.prototype.createCharacters = function() {
   this._chars = [];
   for (var i = 0; i < 6 ; i++) {
      this._chars[i] = new Sprite();
-     //this._chars[i] = new TitleCharacters(i);
      this._chars[i].anchor.x = 1.0;
      this._chars[i].anchor.y = 1.0;
      this._chars[i].x += Graphics.height / 2-100;
