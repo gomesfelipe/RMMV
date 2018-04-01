@@ -90,7 +90,7 @@ Scene_Title.prototype.createCharacters = function() {
 
   };
   for (var i = 0; i < this._char_img.length  ; i++) {  
-        this._chars[0].bitmap = this._char_img[i];
+        this._chars[i].bitmap = this._char_img[i];
    };
 };
 
