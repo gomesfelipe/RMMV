@@ -79,16 +79,25 @@ Scene_Title.prototype.createBackground = function() {
 Scene_Title.prototype.createCharacters = function() {
   this._char_index = 0;
   this._chars = [];
-  for (var i = 0; i < 6 ; i++) {
+};
+  for (var i = 0; i < this._char_number ; i++) {
      this._chars[i] = new Sprite();
-     //this._chars[i] = new TitleCharacters(i);
      this._chars[i].anchor.x = 1.0;
      this._chars[i].anchor.y = 1.0;
-     this._chars[i].x += Graphics.height / 2-100;
-     this._chars[i].y += Graphics.height / 2+100;
-     this._scenarioField.addChild(this._chars[i]);
-
+     this._chars[i].position.x = -this._chars[i].width/2;
+      if (i==0) {
+        this._chars[0].x= Graphics.width / 2-160;
+      } else if (i==1) {
+        this._chars[1].x= Graphics.width / 2+10;
+      } else if (i==2) {
+        this._chars[2].x= Graphics.width / 2+193;
+      } else if (i==3) {
+        this._chars[3].x= Graphics.width / 2+410
+      }  
+     this._chars[i].y = Graphics.height / 2+225;
+     this.addChild(this._chars[i]);
   };
+
   for (var i = 0; i < this._char_img.length  ; i++) {  
         this._chars[i].bitmap = this._char_img[i];
    };
