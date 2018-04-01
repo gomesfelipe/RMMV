@@ -13,6 +13,19 @@
  * @desc Setup the number of the characters on screen.
  * @default 4
  *  
+ * @param W
+ * @type number
+ * @desc Setup the button size as pixel unit.
+ * (Include the macro string called 'W' and then it replaces as a real value.)
+ * @default 246
+ * @min 1
+ *
+ * @param H
+ * @type number
+ * @desc Setup the button size as pixel unit.
+ * (Include the macro string called 'H' and then it replaces as a real value.)
+ * @default 373
+ * @min 1
  *
   */
 
@@ -21,7 +34,9 @@
 　var GomesRocket = GomesRocket || {}; 
  GomesRocket.parameters = PluginManager.parameters('BBR_Animated_TitleScreen');
  GomesRocket.bbr_char_number = Number(GomesRocket.parameters['Char Number'] || 4);
-
+ var w=Number(GomesRocket.parameters['W']);
+ var h=Number(GomesRocket.parameters['H']);
+ 
 //==============================
 // * Initialize
 //==============================
