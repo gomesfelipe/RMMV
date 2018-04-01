@@ -36,7 +36,7 @@
  GomesRocket.bbr_char_number = Number(GomesRocket.parameters['Char Number'] || 4);
  var w=Number(GomesRocket.parameters['W']);
  var h=Number(GomesRocket.parameters['H']);
- 
+
 //==============================
 // * Initialize
 //==============================
@@ -52,7 +52,6 @@ Scene_Title.prototype.initialize = function() {
   this._char_number = Math.min(Math.max(GomesRocket.bbr_char_number,1),999);
   this._char_number += 1;
   this.loadImages(); 
-  this.createCharacters(); 
 };
 
 //==============================
@@ -66,6 +65,7 @@ Scene_Title.prototype.loadImages = function() {
   for (var i = 1; i < this._char_number ; i++) {
        this._char_img.push(ImageManager.loadTitle1("Char_" + i));
   };
+  this.createCharacters(); 
 };
 
 //==============================
@@ -94,7 +94,7 @@ Scene_Title.prototype.createBackground = function() {
 Scene_Title.prototype.createCharacters = function() {
   this._char_index = 0;
   this._chars = [];
-};
+
   for (var i = 0; i < this._char_number ; i++) {
      this._chars[i] = new Sprite();
      this._chars[i].anchor.x = 1.0;
